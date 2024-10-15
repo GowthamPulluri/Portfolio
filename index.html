@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowtham Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style type="text/CSS">
+        html {
+            scroll-behavior: smooth; 
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .navbar {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 60px;
+            z-index: 1000; 
+            background-color: rgb(238, 238, 222);
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box; 
+        }
+
+
+        .navbar a:hover {
+            background-color: rgb(224, 219, 219); 
+        }
+        .portfolio-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: rgb(56, 55, 55);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(56, 55, 55);
+       
+            padding: 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgb(224, 219, 219); 
+            border-radius: 5px;
+        }
+      
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: rgb(56, 55, 55);
+        }
+
+     
+        .dropdown-menu {
+            display: none;
+            flex-direction: column;
+            background-color: rgb(238, 238, 222);
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            z-index: 1;
+        }
+
+        .dropdown-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: rgb(56, 55, 55);
+            border-top: 1px solid #ddd;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgb(224, 219, 219); 
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+    
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+        .nav_block {
+           
+            text-decoration: none;
+            color: rgb(56, 55, 55);
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 
+                         -2px -2px 5px rgba(255, 255, 255, 0.8); 
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .nav_block:hover {
+            transform: scale(1.1); 
+            color:  rgb(56, 55, 55); 
+        }
+        .body {
+            background-color: rgb(238, 238, 222);
+            overflow-x: hidden;
+        }
+        .portfolio {
+            text-align: left;
+        }
+        .profile {
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            padding-left: 10px;
+            padding-top: 30px;
+            padding-right: 30px;
+            animation: zoomIn 1s ease-in-out;
+        }
+        .certificate {
+            width: 500px; 
+            height: 400px; 
+            margin: 0 10px; 
+            border-radius: 15%; 
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .slideshow-container {
+            width: 100%; 
+            max-width: 100%; 
+            overflow: hidden; 
+            margin: 0 auto; 
+            border: 2px solid black;
+        }
+
+       
+        .slideshow {
+            display: flex;
+            animation: slide-left 30s linear infinite;
+        }
+
+  
+        .slideshow img {
+            width: auto; 
+            height: 400px;
+            margin-right: 15px; 
+            border: 3px solid black; 
+        }
+        .slideshow-container:hover .slideshow {
+   
+            transform: scale(1.05); 
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3); 
+        }
+        @media (max-width: 768px) {
+            .slideshow-container {
+                border: 1px solid black; 
+            }
+        
+            .slideshow img {
+                height: 250px; 
+                margin-right: 10px; 
+            }
+        
+            .certificate {
+                width: 90%; 
+                height: auto; 
+            }
+        }
+        
+  
+        @media (max-width: 480px) {
+            .slideshow img {
+                height: 200px; 
+                margin-right: 5px; 
+            }
+        
+            .slideshow-container {
+                padding: 10px;
+                border: none; 
+            }
+        
+            .certificate {
+                width: 100%; 
+                height: auto; 
+            }
+        }
+        
+        .skills {
+            border-radius: 40%;
+            width: 150px;
+            height: 150px;
+            padding-left: 10px;
+            padding-right: 10px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .skills:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fadeInUp {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+        
+        .textFadeInUp {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        @media (max-width: 768px) {
+        
+            .skills {
+                width: 120px;
+                height: 120px;
+            }
+        
+    
+            .text_skills {
+                font-size: 18px;
+            }
+        
+      
+            table {
+                padding: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+   
+            .skills {
+                width: 100px;
+                height: 100px;
+            }
+        
+
+            .text_skills {
+                font-size: 16px;
+            }
+        
+  
+            table {
+                width: 100%;
+                padding: 5px;
+            }
+        
+
+            td {
+                text-align: center;
+                display: block;
+                width: 100%;
+            }
+        }
+        
+        .title {
+            color: rgb(41, 40, 40);
+            font-size: 70px;
+            padding-left: 20px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            flex: 1;
+        }
+        .heading1 {
+            color: rgb(41, 40, 40);
+            font-size: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            animation: fadeInUp 1.5s ease-in-out;
+            margin: 50px 0;
+            text-align: left; 
+        }
+        .heading {
+            color: rgb(41, 40, 40);
+            font-size: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            animation: fadeInUp 1.5s ease-in-out;
+            margin: 50px 0;
+            text-align: center; 
+        }
+        #headingsection {
+            opacity: 0;
+            animation: none; 
+            transition: opacity 0.3s ease; 
+        }
+        #skillsSection {
+            opacity: 0;
+            animation: none; 
+            transition: opacity 0.3s ease; 
+        }
+        .text_about {
+            color: rgb(41, 40, 40);
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+            text-align: center;
+            align-content: center;
+            margin: 20px; 
+        }
+        @media (max-width: 768px) {
+   
+            .heading {
+                font-size: 35px;
+                margin: 30px 0;
+            }
+        
+    
+            table {
+                width: 100%;
+                padding: 10px;
+            }
+        
+            .text_about {
+                font-size: 18px;
+                margin: 10px;
+            }
+        
+
+            #animated-text {
+                max-width: 90%;
+                font-size: 16px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+        
+            .heading {
+                font-size: 30px;
+            }
+        
+            .text_about {
+                font-size: 16px;
+                
+            }
+        
+            #animated-text {
+                font-size: 14px;
+            }
+        }
+        
+        .line {
+            color: black;
+            animation: fadeInUp 2.5s ease-in-out;
+            align-content: center;
+        }
+        .line1 {
+            color: rgb(238, 238, 222);
+            align-content: center;
+            padding-top: 120px;
+        }
+        .line2 {
+            color: rgb(18, 28, 56);
+            align-content: center;
+            padding-top: 80px;
+        }
+        .text_skills {
+            color: rgb(41, 40, 40);
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        section {
+            scroll-margin-top: 70px; 
+        }
+        .typewriter {
+ 
+            white-space: nowrap; 
+            overflow: hidden; 
+            display: inline-block;
+
+        }
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 70px;
+            padding-right: 70px;
+            padding-top: 40px;
+        }
+    
+        .project-box {
+            width: 45%; 
+            background-color: rgb(218, 219, 209);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .td:hover {
+            transform: scale(1.25);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .td-last-child:hover {
+            transform: scale(1.25);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .project-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .certificate:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .from-left {
+            transform: translateX(-100%);
+        }
+        
+        .from-right {
+            transform: translateX(100%);
+        }
+        .fade-in-left, .fade-in-right {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        @media (max-width: 768px) {
+            .projects-container {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            
+            .project-box {
+                width: 100%; 
+                margin-bottom: 20px;
+            }
+        
+            .heading {
+                font-size: 28px;
+                text-align: center;
+            }
+        }
+        
+    
+        @media (max-width: 480px) {
+            .projects-container {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .project-box {
+                width: 100%; 
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+        
+            .project-box h3 {
+                font-size: 18px; 
+            }
+        
+            .project-box p {
+                font-size: 14px; 
+            }
+        
+            .heading {
+                font-size: 24px; 
+            }
+        }
+        .contact-box {
+            width: 450px; 
+            padding: 20px;
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            border-radius: 10px; 
+            margin: auto; 
+        }
+        .th {
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            font-family: 'Times New Roman', Times, serif; 
+        }
+        label {
+            display: block; 
+            margin-bottom: 5px; 
+            font-size: 14px; 
+            text-align: left; 
+            font-weight: bold; 
+        }
+        .input {
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+        }
+        .submit {
+            width: 100%; 
+            padding: 10px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        .submit:hover {
+            background-color: #45a049; 
+        }
+        @media (max-width: 768px) {
+            .contact-box {
+                width: 90%; 
+                padding: 15px; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-box {
+                width: 100%; 
+                padding: 10px; 
+            }
+        
+            .th {
+                font-size: 20px; 
+            }
+        
+            label {
+                font-size: 12px; 
+            }
+        
+            .input, .submit {
+                padding: 8px; 
+            }
+        }        
+        footer {
+            padding: 5px 0; 
+            background-color: rgba(51, 51, 51, 0.3); 
+            color: black; 
+            text-align: center;
+        }
+
+        footer * {
+            margin: 0; 
+            padding: 0; 
+        }
+
+ 
+        .footer-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+
+
+        .footer-head {
+            font-size: 18px; 
+            margin-bottom: 0px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+
+        .d-flex {
+            display: flex;
+            justify-content: center;
+            gap: 20px; 
+            margin-top: 10px;
+        }
+
+        
+        .footer-logos {
+            margin: 0 5px; 
+            width: 25px; 
+            height: 25px; 
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .footer-logos:hover {
+            transform: scale(1.2); 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    
+        .ml-4 {
+            margin-left: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-head {
+                font-size: 16px; 
+            }
+        
+            .footer-logos {
+                width: 20px;
+                height: 20px; 
+                margin: 0 3px; 
+            }
+        
+            .d-flex {
+                flex-direction: column; 
+                gap: 10px; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-head {
+                font-size: 14px; 
+            }
+        
+            .footer-logos {
+                width: 18px; 
+                height: 18px; 
+            }
+        
+            .d-flex {
+                gap: 10px; 
+            }
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; 
+            overflow: hidden;
+        }
+
+
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .content h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+
+        .content .btn {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .content .btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #0073e6;
+        }
+ 
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2em;
+            }
+
+            .content p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 1.5em;
+            }
+
+            .content p {
+                font-size: 0.9em;
+            }
+
+            .social-icons a {
+                font-size: 1.2em;
+            }
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 20px;
+        }
+
+        
+        .video-background2 {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 50%; 
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+    
+        #bg-video2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 50%; 
+        }
+        @media (max-width: 768px) {
+            .title {
+                font-size: 50px; 
+            }
+
+            .content-container {
+                flex-direction: column; 
+                align-items: center;
+            }
+
+            .video-background2 {
+                width: 300px; 
+                height: 300px;
+                margin-top: 20px; 
+                margin-left: 0; 
+            }
+        }
+
+
+        @media (max-width: 500px) {
+            .title {
+                font-size: 30px; 
+                margin: 0px;
+                padding-right: 10px;
+            }
+
+            .video-background2 {
+                width: 200px; 
+                height: 200px;
+                margin-top: 20px; 
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                border-color: transparent; 
+            }
+            50% {
+                border-color: black; 
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); 
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes scaleHighlight {
+            0% {
+                transform: scale(1);
+                color: rgb(41, 40, 40); 
+            }
+            50% {
+                transform: scale(1.2); 
+                color: rgb(41, 40, 40); 
+            }
+            100% {
+                transform: scale(1);
+                color: rgb(41, 40, 40); 
+            }
+        }
+        @keyframes slide-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); } 
+        }
+    
+
+        #animated-text {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .cursor {
+            animation: blink 1s step-end infinite; 
+        }
+    </style>
+</head>
+<body class="body">
+
+    <div class="navbar">
+        <div class="portfolio-title">Portfolio</div>
+
+
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+        <div class="nav-links">
+            <a class="nav_block" href="#About"><strong>About</strong></a>
+            <a class="nav_block" href="#Skills"><strong>Skills</strong></a>
+            <a class="nav_block" href="#Projects"><strong>Projects</strong></a>
+            <a class="nav_block" href="#Achievements"><strong>Achievements</strong></a>
+            <a class="nav_block" href="#Contact"><strong>Contact</strong></a>
+        </div>
+
+        <div class="dropdown-menu" id="mobileMenu">
+            <a href="#About">About</a>
+            <a href="#Skills">Skills</a>
+            <a href="#Projects">Projects</a>
+            <a href="#Achievements">Achievements</a>
+            <a href="#Contact">Contact</a>
+        </div>
+    </div>
+
+    <script>
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+    
+    <div class="hero-section">
+
+        <video autoplay muted loop id="bg-video">
+            <source src="video (online-video-cutter.com) (1) (1) (1).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+
+        <div class="content">
+            <h1>Gowtham's Portfolio: Innovating Electronics and Communication Solutions</h1>
+            <p>Explore My Projects and Passion for Technology</p>
+            
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <div class="line1">
+
+    </div>
+    <table>
+        <tr>
+            <td width="100%" class="title">
+                <div class="content-container">
+                <div>
+                <table>
+                <tr>
+                    <td>
+                        <div class="typewriter">
+                        <span id="text"></span><span class="cursor"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="typewriter">
+                        <span id="text1"></span><span class="cursor"></span>
+                        </div>
+                    </td>
+                </tr>
+    </table>
+    </div>
+
+
+                    <div class="video-background2">
+                        <video autoplay muted loop id="bg-video2">
+                            <source src="Untitled_Project_V3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <script>
+      
+                    const text = "Hey, I am";
+                    const text1 = "Gowtham Pulluri (GK)";
+                    let index = 0;
+                    let index1 = 0;
+                    function type() {
+                        if (index < text.length) {
+                            document.getElementById("text").innerHTML += text.charAt(index);
+                            index++;
+                            setTimeout(type, 100);
+                        }
+                    }
+
+
+                    function type1() {
+                        if (index1 < text1.length) {
+                            document.getElementById("text1").innerHTML += text1.charAt(index1);
+                            index1++;
+                            setTimeout(type1, 100);
+                        }
+                    }
+
+
+                    const observer3 = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                type();  
+                                setTimeout(type1, 1000); 
+                                observer3.disconnect(); 
+                            }
+                        });
+                    });
+
+
+                    const target = document.querySelector('.title');
+                    observer3.observe(target);
+                </script>
+            </td>
+        </tr>
+    </table>
+    <script>
+
+        var video = document.getElementById("bg-video2");
+        video.playbackRate = 0.7;
+    </script>
+    <div class="line1" >
+
+    </div>
+    <table width="100%" height="10px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <section id="About">
+            <td align="center" class="heading" id="skillsSection">
+                
+                <h2>Meet Gowtham !</h2>
+            </td>
+        </section>
+        </tr>
+    </table>
+    <script>
+
+        const observerSkills = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+    
+                    entry.target.style.animation = "fadeInUp 2s ease forwards"; 
+                    entry.target.style.opacity = 1; 
+                    observerSkills.unobserve(entry.target);
+                }
+            });
+        });
+
+
+        const skillsSection = document.getElementById('skillsSection');
+        observerSkills.observe(skillsSection);
+    </script>
+    <table width="100%" height="150px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td align="center" class="text_about" style="text-align: center;">
+                <div id="animated-text" class="text_about" style="max-width: 1000px; text-align: justify; margin: 0 auto; display: inline-block;">
+                    <span id="text2">
+                        Passionate and dedicated Electronics Engineering Student with a comprehensive foundation in circuit design, antenna design, PCB design, embedded systems, and IoT, coupled with a growing expertise in VLSI. Eager to apply academic knowledge and hands-on skills to real-world projects and innovative solutions. Known for strong analytical and problem-solving abilities, collaborative mindset, and attention to detail. Proactively exploring emerging technologies in electronics and communication, with a keen interest in RF systems, wireless communication, and embedded software development. A fast learner, adaptable, and committed to continuous improvement and growth in the engineering field.
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script>
+        window.onload = function() {
+            if (window.location.hash) {
+                history.replaceState("", document.title, window.location.pathname);
+            }
+        };
+    
+        const observer2 = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = "scaleHighlight 2s ease";
+                    entry.target.style.opacity = 1; 
+                    observer2.unobserve(entry.target);  
+                }
+            });
+        });
+        const textSection = document.getElementById('animated-text');
+        observer2.observe(textSection);
+    </script>
+    
+    <table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td class="line" ><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+        </tr>
+        <tr height="5px">
+            <section id="Skills"></section>
+            <td align="left" class="heading1">
+                
+                    &nbsp;&nbsp;&nbsp;My Skills
+            </td>
+                            </section>
+        </tr>
+    </table>
+    <table width="100%" height="500px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td align="center"><img src="html_css.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">HTML & CSS</p></td>
+            <td align="center"><img src="python.jpg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Python</p></td>
+            <td align="center"><img src="PCB Design.jpg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">PCB Designing</p></td>
+        </tr>
+        <tr>
+            <td align="center"><img src="Antenna Design.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Antenna Designing</p></td>
+            <td align="center"><img src="IOT.avif" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Internet of Things</p></td>
+            <td align="center"><img src="Embedded Systems.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Embedded Systems</p></td>
+        </tr>
+    </table>
+    <table width="100%" height="3px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td class="line" align="center"><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+        </tr>
+    </table>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fadeInUp');
+                    entry.target.classList.add('textFadeInUp');
+                }
+            });
+        });
+    
+        const skillsImages = document.querySelectorAll('.skills');
+        const skillsText = document.querySelectorAll('.text_skills');
+        skillsImages.forEach(image => {
+            observer.observe(image);
+        });
+        skillsText.forEach(text => {
+            observer.observe(text);
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            if (window.location.hash) {
+                history.replaceState("", document.title, window.location.pathname);
+            }
+        };
+    </script>
+    
+        
+    <table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+        <tr height="5px">
+            <section id="Projects">
+                <td align="middle" class="heading">
+                
+                    My Projects</td>
+            </section>
+            
+        </tr>
+    </table>
+    <div class="projects-container">
+        <div class="project-box from-left">
+            <h3>Company Representative Website using HTML & CSS</h3>
+            <p>Designed and developed a responsive website for a company
+                representative using HTML and CSS. The website features a
+                clean and professional layout, optimized for both desktop
+                and mobile devices. Focused on user-friendly navigation,
+                aesthetic design, and performance optimization, ensuring a
+                seamless user experience while showcasing company services
+                and contact information effectively.
+                </p>
+        </div>
+        <div class="project-box from-right">
+            <h3>Microstrip Patch Antenna with DGS
+            </h3>
+            <p>Designed a Microstrip Patch Antenna with Defected Ground
+                Structure (DGS) on a Rogers 5880 substrate, incorporating
+                an inverted U-slot on the patch. The antenna, measuring
+                54mm x 66mm, is optimized for enhanced performance,
+                improving bandwidth and impedance matching.This design
+                offers a compact and efficient solution for modern wireless
+                communication applications.
+                </p>
+        </div>
+        <div class="project-box from-left">
+            <h3>Microstrip Patch Antenna Using SIW</h3>
+            <p>Designed a Substrate Integrated Waveguide (SIW) microstrip
+                patch antenna with a central slot on a 31 mm x 24 mm patch,
+                utilizing Rogers 5880 substrate. The SIW structure was
+                employed to enhance the antenna's performance by reducing
+                radiation loss and improving power handling capability. The
+                central slot on the patch contributed to enhanced bandwidth
+                and resonance.</p>
+        </div>
+        <div class="project-box from-right">
+            <h3>Car Parking System using ESP32</h3>
+            <p>Developed an automated car parking system using an ESP32
+                microcontroller for real-time monitoring and management of
+                parking spaces. The system integrates sensors to detect
+                vehicle presence and provides live updates on parking
+                availability.This is scaled for use in commercial parking lots
+                or smart cities.
+                </p>
+        </div>
+    </div>
+
+<script>
+    const observer1 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('from-left')) {
+                    entry.target.classList.add('fade-in-left');
+                } else if (entry.target.classList.contains('from-right')) {
+                    entry.target.classList.add('fade-in-right');
+                }
+                observer1.unobserve(entry.target); 
+            }
+        });
+    });
+    document.querySelectorAll('.project-box').forEach(project => {
+        observer1.observe(project);
+    });
+</script>
+<table width="100%" height="3px" border="0px" cellpadding="10" cellspacing="5">
+    <tr>
+        <td align="center" class="heading"><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+    </tr>
+</table>
+<table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+    <tr height="5px">
+        <section id="Achievements">
+            <td align="middle" class="heading">My Achievements</td>
+        </section>
+    </tr>
+</table>
+<table width="100%" height="400px" border="0px" cellpadding="10" cellspacing="5">
+    <tr>
+        <td align="center">
+            <div class="slideshow-container">
+                <div class="slideshow">
+                    <img src="Embedded Systems _Skilltroniks.jpg" alt="Certificate 1">
+                    <img src="Sensor Interfacing and Cloud Computing _Skilltroniks.jpg" alt="Certificate 2">
+                    <img src="AWS Cloud Foundations.png" alt="Certificate 3">
+                    <img src="PCB Designing.jpg" alt="Certificate 4">
+                    <img src="AWS Cloud Architecting.png" alt="Certificate 5">
+                    <img src="HTML& CSS beginener Certificate _Udemy.jpg" alt="Certificate 6">
+                    <img src="Javascript.jpg" alt="Certificate 7">
+
+                    <img src="Embedded Systems _Skilltroniks.jpg" alt="Certificate 1">
+                    <img src="Sensor Interfacing and Cloud Computing _Skilltroniks.jpg" alt="Certificate 2">
+                    <img src="AWS Cloud Foundations.png" alt="Certificate 3">
+                    <img src="PCB Designing.jpg" alt="Certificate 4">
+                    <img src="AWS Cloud Architecting.png" alt="Certificate 5">
+                    <img src="HTML& CSS beginener Certificate _Udemy.jpg" alt="Certificate 6">
+                    <img src="Javascript.jpg" alt="Certificate 7">
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="line2">
+
+</div>
+<!-- <form action="submit_form.php" method="POST">
+    <table width="100%" height="400px" border="0px" cellpadding="10" cellspacing="5">
+        <tr align="center">
+            <section id="Contact">
+                <td>
+                    <div class="contact-box">
+                        <h3 class="th">GET IN TOUCH</h3>
+                
+                        <label for="first-name">First Name*</label>
+                        <input type="text" id="first-name" placeholder="Enter First Name" class="input">
+                
+                        <label for="last-name">Last Name*</label>
+                        <input type="text" id="last-name" placeholder="Enter Last Name" class="input">
+                
+                        <label for="email">Email ID*</label>
+                        <input type="text" id="email" placeholder="Enter your Email ID" class="input">
+                
+                        <input type="submit" class="submit" value="Submit">
+                    </div>
+                </td>
+            </section>
+        </tr>
+    </table>
+</form> -->
+
+<div class="line2">
+
+</div>
+<footer>
+    <div class="footer-section">
+        <div class="d-flex flex-row justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-c-circle footer-logos" viewBox="0 0 16 16">
+                <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z" />
+            </svg>
+            <h1 class="footer-head">Copyright 2024 reserved by Gowtham Pulluri</h1>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <a href="https://wa.me/qr/W5V6GPJBZSWLK1" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-whatsapp footer-logos" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/pulluri-gowtham-585b472a4/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-linkedin footer-logos" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/pulluri_gowtham/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-instagram footer-logos" viewBox="0 0 16 16">
+                    <path d="M8 0c2.136 0 2.418.008 3.263.047.845.04 1.42.175 1.938.37a3.937 3.937 0 0 1 1.43.93c.38.38.67.824.93 1.43.195.518.33 1.093.37 1.938.04.845.047 1.127.047 3.263 0 2.136-.008 2.418-.047 3.263-.04.845-.175 1.42-.37 1.938a3.937 3.937 0 0 1-.93 1.43 3.937 3.937 0 0 1-1.43.93c-.518.195-1.093.33-1.938.37-.845.04-1.127.047-3.263.047-2.136 0-2.418-.008-3.263-.047-.845-.04-1.42-.175-1.938-.37a3.937 3.937 0 0 1-1.43-.93 3.937 3.937 0 0 1-.93-1.43c-.195-.518-.33-1.093-.37-1.938C.008 10.418 0 10.136 0 8c0-2.136.008-2.418.047-3.263.04-.845.175-1.42.37-1.938a3.937 3.937 0 0 1 .93-1.43 3.937 3.937 0 0 1 1.43-.93c.518-.195 1.093-.33 1.938-.37C5.582.008 5.864 0 8 0zm0 1.454c-2.097 0-2.356.008-3.192.046-.768.037-1.185.166-1.462.276-.367.142-.63.312-.906.588a2.498 2.498 0 0 0-.588.906c-.11.277-.239.694-.276 1.462-.038.836-.046 1.095-.046 3.192s.008 2.356.046 3.192c.037.768.166 1.185.276 1.462.142.367.312.63.588.906.276.276.539.446.906.588.277.11.694.239 1.462.276.836.038 1.095.046 3.192.046s2.356-.008 3.192-.046c.768-.037 1.185-.166 1.462-.276.367-.142.63-.312.906-.588.276-.276.446-.539.588-.906.11-.277.239-.694.276-1.462.038-.836.046-1.095.046-3.192s-.008-2.356-.046-3.192c-.037-.768-.166-1.185-.276-1.462a2.498 2.498 0 0 0-.588-.906 2.498 2.498 0 0 0-.906-.588c-.277-.11-.694-.239-1.462-.276-.836-.038-1.095-.046-3.192-.046zm0 2.694a3.852 3.852 0 1 1 0 7.705 3.852 3.852 0 0 1 0-7.705zm0 1.454a2.398 2.398 0 1 0 0 4.796 2.398 2.398 0 0 0 0-4.796zm5.345-.26a.91.91 0 1 1-1.82 0 .91.91 0 0 1 1.82 0z" />
+                </svg>
+            </a>
+            <a href="https://github.com/GowthamPulluri" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-github footer-logos" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.582 0 8c0 3.539 2.292 6.537 5.438 7.598.397.073.543-.173.543-.385 0-.19-.007-.694-.01-1.363-2.209.478-2.676-1.057-2.676-1.057-.361-.914-.88-1.158-.88-1.158-.719-.491.055-.482.055-.482.797.056 1.287.818 1.287.818.708 1.214 1.857.865 2.31.661.072-.513.278-.865.507-1.064-1.775-.202-3.646-.888-3.646-3.948 0-.873.313-1.586.828-2.146-.083-.203-.36-1.023.079-2.126 0 0 .672-.215 2.203.82A7.634 7.634 0 0 1 8 2.93a7.634 7.634 0 0 1 2.007.269c1.53-1.035 2.203-.82 2.203-.82.44 1.103.162 1.923.08 2.126.516.56.828 1.273.828 2.146 0 3.066-1.872 3.746-3.648 3.948.285.245.54.733.54 1.477 0 1.064-.01 1.924-.01 2.187 0 .213.144.463.548.385C13.708 14.537 16 11.539 16 8c0-4.418-3.582-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
