@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowtham Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style type="text/CSS">
+        html {
+            scroll-behavior: smooth; 
+        }
+        .td {
+            font-size: medium;
+            border-right: 1px solid black;
+            height: 50px;
+            text-align: center; 
+            width: 90px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .td-last-child {
+            border-right: none;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .nav_block {
+           
+            text-decoration: none;
+            color: rgb(22, 21, 21);
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), /* Dark shadow */
+                         -2px -2px 5px rgba(255, 255, 255, 0.8); /* Light highlight */
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .nav_block:hover {
+            transform: scale(1.1); /* Make the text bigger */
+            color: #ff5; /* Change text color on hover */
+        }
+        .body {
+            background-color: rgb(18, 28, 56);
+            overflow-x: hidden;
+        }
+        .profile {
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            padding-left: 10px;
+            padding-top: 30px;
+            padding-right: 30px;
+            animation: zoomIn 1s ease-in-out;
+        }
+        .certificate {
+            width: 500px;
+            height: 400px;
+            margin: 0 10px;
+            /*border-radius: 15%;
+            transition: transform 0.5s ease, opacity 0.5s ease;*/
+        }
+        .slideshow-container {
+            width: 100%; /* Set a width that's less than full width */
+            max-width: 100%; /* Maximum width for the slideshow */
+            overflow: hidden; /* Hide overflow content */
+            margin: 0 auto; /* Center the slideshow container */
+            border: 2px solid black; /* Border around slideshow */
+        }
+
+        /* Slideshow images */
+        .slideshow {
+            display: flex;
+            animation: slide-left 15s linear infinite;
+        }
+
+        /* Individual certificate images */
+        .slideshow img {
+            width: 100%; /* Set a smaller image width */
+            height: 400px; /* Maintain aspect ratio */
+            margin-right: 15px; /* Space between images */
+            border: 3px solid black; /* Border around certificates */
+        }
+        .slideshow-container:hover .slideshow {
+            animation-play-state: paused;
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .skills {
+            border-radius: 40%;
+            width: 150px;
+            height: 150px;
+            padding-left: 10px;
+            padding-right: 10px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .skills:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fadeInUp {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        .textFadeInUp {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .title {
+            color: rgb(202, 202, 177);
+            font-size: 70px;
+            padding-left: 100px;
+            font-family:'Times New Roman', Times, serif;
+        }
+        .heading {
+            color: rgb(241, 245, 11);
+            font-size: 40px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight:500;
+            
+        }
+        .text_about {
+            color: rgb(231, 231, 220);
+            font-size: 20px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight:500;
+            text-align:center;
+            align-content: center;
+
+        }
+        .line {
+            color: black;
+            animation: fadeInUp 2.5s ease-in-out;
+            align-content: center;
+        }
+        .line1 {
+            color: rgb(18, 28, 56);
+            align-content: center;
+            padding-top: 120px;
+        }
+        .text_skills {
+            color: rgb(231, 231, 220);
+            font-size: 20px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight:500;
+
+        }
+        .typewriter {
+            /* border-right: 2px solid black; Cursor effect */
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide the overflow */
+        }
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 70px;
+            padding-right: 70px;
+            padding-top: 40px;
+        }
+    
+        .project-box {
+            width: 45%;
+            background-color: rgb(201, 198, 198);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            
+        }
+        .td:hover {
+            transform: scale(1.25);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .td-last-child:hover {
+            transform: scale(1.25);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .project-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .certificate:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 15px rgba(87, 163, 199, 0.3);
+        }
+        .from-left {
+            transform: translateX(-100%);
+        }
+    
+        .from-right {
+            transform: translateX(100%);
+        }
+        .fade-in-left {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+    
+        .fade-in-right {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }    
+        /* Animation for cursor blinking */
+        @keyframes blink {
+            0%, 100% {
+                border-color: transparent; /* Hidden cursor */
+            }
+            50% {
+                border-color: black; /* Visible cursor */
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); /* Move from below */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Move to its original position */
+            }
+        }
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes scaleHighlight {
+            0% {
+                transform: scale(1);
+                color: #f7f3f3; /* Normal text color */
+            }
+            50% {
+                transform: scale(1.2); /* Slightly larger */
+                color: #f7f4f6; /* Highlight color (blue in this case) */
+            }
+            100% {
+                transform: scale(1);
+                color: #f5f1f1; /* Back to normal */
+            }
+        }
+        @keyframes slide-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    
+        /* Initially hide the animation until the section comes into view */
+        #animated-text {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .cursor {
+            animation: blink 1s step-end infinite; /* Blinking cursor animation */
+        }
+    </style>
+</head>
+<body class="body">
+    <table width="100%" height="50px" border="0" bgcolor="grey"cellpadding="10" cellspacing="5">
+        <tr>
+            <td width="100%" bgcolor="grey" ><strong>Portfolio</strong></td>
+            <td>
+                <table width="100%" height="50px" border="0" bgcolor="grey"cellpadding="10" cellspacing="5">
+                    <tr align="center">
+                        <td class="td"><a class="nav_block" href="#About"><strong>About</strong></a></td>
+                        <td class="td"><a class="nav_block" href="#Skills"><strong>Skills</strong></a></td>
+                        <td class="td"><a class="nav_block" href="#Projects"><strong>Projects</strong></a></td>
+                        <td class="td"><a class="nav_block" href="#Achievements"><strong>Achievements</strong></a></td>
+                        <td class="td-last-child"><a class="nav_block" href="#Contact"><strong>Contact</strong></a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0px">
+        <tr>
+            <!--<td width="100%" class="title"><font face="Georgia" size="6" color="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hey, I am</font><br><font face="Georgia" size="10px">&nbsp;&nbsp;&nbsp;Gowtham Pulluri</font></td>-->
+            <td width="100%" class="title">
+                <table>
+                    <tr><td >
+                          
+                <div class="typewriter">
+                    <span id="text"></span><span class="cursor"></span>
+                 </div>
+            
+                <script>
+                // The text to be typed out
+                const text = "Hey, I am";
+                let index = 0; // Current index of the text
+
+            
+                function type() {
+                    if (index < text.length) {
+                        document.getElementById("text").innerHTML += text.charAt(index); // Add next character
+                        index++; // Move to the next character
+                        setTimeout(type, 100); // Call the function again after a delay
+                    }
+                }
+                // Start the typing effect
+                type();
+
+                    </script>
+                    </td></tr>
+                    <tr><td>
+                        <div class="typewriter">
+                            <span id="text1"></span><span class="cursor"></span>
+                         </div>
+                    
+                        <script>
+                        // The text to be typed out
+                        const text1 = "Gowtham Pulluri(GK)";
+                        let index1 = 0; // Current index of the text
+        
+                    
+                        function type1() {
+                            if (index < text1.length) {
+                                document.getElementById("text1").innerHTML += text1.charAt(index1); // Add next character
+                                index1++; // Move to the next character
+                                setTimeout(type1, 100); // Call the function again after a delay
+                               
+                            }
+                        }
+                        setTimeout(type1, 1000);
+                            </script>
+                    </td></tr>
+                </table>
+            </td>
+            <td align="center" valign="top"><img src="profile.jpg" class="profile" width="300px" height="300 px" alt="Circular Image"></td>
+        </tr>
+    </table>
+    <div class="line1">
+
+    </div>
+    <table width="100%" height="150px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td align="center" class="heading" id="skillsSection">
+                <a id="About"></a>
+                <h2>What Am I?</h2>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" class="text_about" style="text-align: center;">
+                <!-- Centering the animated content with proper alignment -->
+                <div id="animated-text" class="text_about" style="max-width: 1000px; text-align: justify; margin: 0 auto; display: inline-block;">
+                    <span id="text2">
+                        Passionate and dedicated Electronics Engineering Student with a comprehensive foundation in circuit design, antenna design, PCB design, embedded systems, and IoT, coupled with a growing expertise in VLSI. Eager to apply academic knowledge and hands-on skills to real-world projects and innovative solutions. Known for strong analytical and problem-solving abilities, collaborative mindset, and attention to detail. Proactively exploring emerging technologies in electronics and communication, with a keen interest in RF systems, wireless communication, and embedded software development. A fast learner, adaptable, and committed to continuous improvement and growth in the engineering field.
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script>
+        // Function to remove URL hash to prevent auto-scroll on refresh
+        window.onload = function() {
+            if (window.location.hash) {
+                history.replaceState("", document.title, window.location.pathname);
+            }
+        };
+    
+        // Intersection Observer to trigger the scaling and highlighting animation when the section comes into view
+        const observer2 = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start animation when the section is in view
+                    entry.target.style.animation = "scaleHighlight 2s ease";
+                    entry.target.style.opacity = 1; // Make the element visible
+                    observer2.unobserve(entry.target);  // Unobserve after animation starts
+                }
+            });
+        });
+    
+        // Observe the text section
+        const textSection = document.getElementById('animated-text');
+        observer2.observe(textSection);
+    </script>
+    
+    <table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td class="line" ><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+        </tr>
+        <tr height="5px">
+            <td align="left" class="heading"><a id="Skills"></a>&nbsp;&nbsp;&nbsp;My Skills</td>
+        </tr>
+    </table>
+    <table width="100%" height="500px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td align="center"><img src="html_css.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">HTML & CSS</p></td>
+            <td align="center"><img src="python.jpg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Python</p></td>
+            <td align="center"><img src="PCB Design.jpg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">PCB Designing</p></td>
+        </tr>
+        <tr>
+            <td align="center"><img src="Antenna Design.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Antenna Designing</p></td>
+            <td align="center"><img src="IOT.avif" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Internet of Things</p></td>
+            <td align="center"><img src="Embedded Systems.jpeg" class="skills" width="300px" height="300px" alt="Circular Image"><br><br><p class="text_skills">Embedded Systems</p></td>
+        </tr>
+    </table>
+    <table width="100%" height="3px" border="0px" cellpadding="10" cellspacing="5">
+        <tr>
+            <td class="line" align="center"><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+        </tr>
+    </table>
+    <script>
+        // Intersection Observer for triggering animations
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animations to images and text when they come into view
+                    entry.target.classList.add('fadeInUp');
+                    entry.target.classList.add('textFadeInUp');
+                }
+            });
+        });
+    
+        // Get all skill images and texts
+        const skillsImages = document.querySelectorAll('.skills');
+        const skillsText = document.querySelectorAll('.text_skills');
+    
+        // Observe each image and text
+        skillsImages.forEach(image => {
+            observer.observe(image);
+        });
+        skillsText.forEach(text => {
+            observer.observe(text);
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            // If the page loads with a hash in the URL, remove it to prevent auto-scrolling
+            if (window.location.hash) {
+                // Use `replaceState` to remove the hash without causing a page reload
+                history.replaceState("", document.title, window.location.pathname);
+            }
+        };
+    </script>
+    
+        
+    <table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+        <tr height="5px">
+            <td align="middle" class="heading"><a id="Projects"></a>My Projects</td>
+        </tr>
+    </table>
+    <div class="projects-container">
+        <div class="project-box from-left">
+            <h3>Company Representative Website using HTML & CSS</h3>
+            <p>Designed and developed a responsive website for a company
+                representative using HTML and CSS. The website features a
+                clean and professional layout, optimized for both desktop
+                and mobile devices. Focused on user-friendly navigation,
+                aesthetic design, and performance optimization, ensuring a
+                seamless user experience while showcasing company services
+                and contact information effectively.
+                </p>
+        </div>
+        <div class="project-box from-right">
+            <h3>Microstrip Patch Antenna with DGS
+            </h3>
+            <p>Designed a Microstrip Patch Antenna with Defected Ground
+                Structure (DGS) on a Rogers 5880 substrate, incorporating
+                an inverted U-slot on the patch. The antenna, measuring
+                54mm x 66mm, is optimized for enhanced performance,
+                improving bandwidth and impedance matching.This design
+                offers a compact and efficient solution for modern wireless
+                communication applications.
+                </p>
+        </div>
+        <div class="project-box from-left">
+            <h3>Microstrip Patch Antenna Using SIW</h3>
+            <p>Designed a Substrate Integrated Waveguide (SIW) microstrip
+                patch antenna with a central slot on a 31 mm x 24 mm patch,
+                utilizing Rogers 5880 substrate. The SIW structure was
+                employed to enhance the antenna's performance by reducing
+                radiation loss and improving power handling capability. The
+                central slot on the patch contributed to enhanced bandwidth
+                and resonance.</p>
+        </div>
+        <div class="project-box from-right">
+            <h3>Car Parking System using ESP32</h3>
+            <p>Developed an automated car parking system using an ESP32
+                microcontroller for real-time monitoring and management of
+                parking spaces. The system integrates sensors to detect
+                vehicle presence and provides live updates on parking
+                availability.This is scaled for use in commercial parking lots
+                or smart cities.
+                </p>
+        </div>
+    </div>
+
+<script>
+    // Intersection Observer to trigger animations when in view
+    const observer1 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('from-left')) {
+                    entry.target.classList.add('fade-in-left');
+                } else if (entry.target.classList.contains('from-right')) {
+                    entry.target.classList.add('fade-in-right');
+                }
+                observer1.unobserve(entry.target); // Remove observer after animation triggers
+            }
+        });
+    });
+
+    // Observe each project-box
+    document.querySelectorAll('.project-box').forEach(project => {
+        observer1.observe(project);
+    });
+</script>
+<table width="100%" height="3px" border="0px" cellpadding="10" cellspacing="5">
+    <tr>
+        <td align="center" class="heading"><hr width="80%" align="center" color="black" style="border: 2px solid black"></td>
+    </tr>
+</table>
+<table width="100%" height="5px" border="0px" cellpadding="10" cellspacing="5">
+    <tr height="5px">
+        <td align="middle" class="heading"><a id="Achievements"></a>My Achievements</td>
+    </tr>
+</table>
+<table width="100%" height="400px" border="0px" cellpadding="10" cellspacing="5">
+    <tr>
+        <td align="center">
+            <div class="slideshow-container">
+                <div class="slideshow">
+                    <!-- Certificate images -->
+                    <img src="Embedded Systems _Skilltroniks.jpg" alt="Certificate 1">
+                    <img src="Sensor Interfacing and Cloud Computing _Skilltroniks.jpg" alt="Certificate 2">
+                    <img src="AWS Cloud Foundations.png" alt="Certificate 3">
+                    <img src="PCB Designing.jpg" alt="Certificate 4">
+                    <img src="AWS Cloud Architecting.png" alt="Certificate 5">
+                    <img src="HTML& CSS beginener Certificate _Udemy.jpg" alt="Certificate 6">
+                    <img src="Javascript.jpg" alt="Certificate 7">
+                    <!-- Duplicating images for smooth scroll -->
+                    <img src="Embedded Systems _Skilltroniks.jpg" alt="Certificate 1">
+                    <img src="Sensor Interfacing and Cloud Computing _Skilltroniks.jpg" alt="Certificate 2">
+                    <img src="AWS Cloud Foundations.png" alt="Certificate 3">
+                    <img src="PCB Designing.jpg" alt="Certificate 4">
+                    <img src="AWS Cloud Architecting.png" alt="Certificate 5">
+                    <img src="HTML& CSS beginener Certificate _Udemy.jpg" alt="Certificate 6">
+                    <img src="Javascript.jpg" alt="Certificate 7">
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+</body>

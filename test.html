@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styles for the container */
+        table {
+            width: 100%;
+            border: 0;
+        }
+
+        /* Flexbox for the content container */
+        .content-container {
+            display: flex;
+            justify-content: space-between; /* Keeps the video and text apart */
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Style for the text container */
+        .title {
+            color: rgb(41, 40, 40);
+            font-size: 70px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            flex: 1; /* Allows text to take up space without wrapping */
+        }
+
+        /* Typewriter effect styling */
+        .typewriter {
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide the overflow */
+            display: inline-block;
+        }
+
+        /* Video container - circular video */
+        .video-background2 {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 50%; /* Makes the container circular */
+            flex-shrink: 0; /* Prevents video from shrinking or wrapping with text */
+            margin-left: 20px; /* Add space between text and video */
+        }
+
+        #bg-video2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the circle */
+            border-radius: 50%; /* Makes the video circular */
+        }
+
+        /* Profile Picture for typewriter animation */
+        .profile {
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        /* Media Query for devices smaller than 768px */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 50px; /* Adjust text size */
+            }
+
+            .content-container {
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center;
+            }
+
+            .video-background2 {
+                width: 300px; /* Shrink video size */
+                height: 300px;
+                margin-top: 20px; /* Add space above the video */
+                margin-left: 0; /* Remove left margin */
+            }
+        }
+
+        /* Media Query for devices smaller than 480px */
+        @media (max-width: 480px) {
+            .title {
+                font-size: 35px; /* Further adjust text size */
+            }
+
+            .video-background2 {
+                width: 200px; /* Shrink video size */
+                height: 200px;
+                margin-top: 20px; /* Add space above the video */
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="100%" class="title">
+                <div class="content-container">
+                    <!-- Typewriter Text Container -->
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="typewriter">
+                                        <span id="text"></span><span class="cursor"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="typewriter">
+                                        <span id="text1"></span><span class="cursor"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Profile (Circular Video) -->
+                    <div class="video-background2">
+                        <video autoplay muted loop id="bg-video2">
+                            <source src="Untitled_Project_V3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <script>
+                    // The text to be typed out
+                    const text = "Hey, I am";
+                    const text1 = "Gowtham Pulluri(GK)";
+                    let index = 0;
+                    let index1 = 0;
+
+                    // Typewriter effect for the first text
+                    function type() {
+                        if (index < text.length) {
+                            document.getElementById("text").innerHTML += text.charAt(index);
+                            index++;
+                            setTimeout(type, 100);
+                        }
+                    }
+
+                    // Typewriter effect for the second text
+                    function type1() {
+                        if (index1 < text1.length) {
+                            document.getElementById("text1").innerHTML += text1.charAt(index1);
+                            index1++;
+                            setTimeout(type1, 100);
+                        }
+                    }
+
+                    // Use IntersectionObserver to trigger the typewriter effect when scrolling into view
+                    const observer3 = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                type();  // Trigger the first typewriter effect
+                                setTimeout(type1, 1000); // Trigger the second typewriter effect after 1 second
+                                observer3.disconnect(); // Stop observing once the animation starts
+                            }
+                        });
+                    });
+
+                    // Start observing the '.title' element
+                    const target = document.querySelector('.title');
+                    observer3.observe(target);
+                </script>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
